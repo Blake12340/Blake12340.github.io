@@ -1,0 +1,17 @@
+---
+title: "Blake Conrad"
+image: C:/Users/blake/OneDrive/Documents/E portfolio/4F70C060-E94B-4C67-8ECC-C7B4388EE1B2.jpg
+about:
+  template: jolla
+  links:
+    - icon: github
+      text: GitHub
+      href: https://github.com/Blake12340
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/blake-conrad-alexander-88364a440/?isSelfProfile=true&trk=public-profile-join-page
+    - icon: inboxes
+      text: Contact
+      href: mailto:blake.conrad1206@gmail.com
+---
+
