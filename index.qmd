@@ -1,7 +1,7 @@
 ---
 title: "Blake Conrad"
 image: Headshot.jpg
-about:
+about: 
   template: jolla
   links:
     - icon: github
