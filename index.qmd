@@ -1,6 +1,6 @@
 ---
 title: "Blake Conrad"
-image: C:/Users/blake/OneDrive/Documents/E portfolio/4F70C060-E94B-4C67-8ECC-C7B4388EE1B2.jpg
+image: Headshot.jpg
 about:
   template: jolla
   links:
