@@ -1,0 +1,8 @@
+.quarto-title-banner { background: #153e52; }
+.quarto-title-banner .title, .quarto-title-banner .subtitle { color: #fff; }
+main { line-height: 1.65; }
+main h2 { color: #153e52; margin-top: 2.8rem; }
+main h3 { font-size: 1.2rem; margin-top: 1.8rem; }
+main .quarto-figure img { border: 1px solid #dce3e7; border-radius: 6px; }
+.btn-primary { background-color: #17617a; border-color: #17617a; }
+figcaption { font-size: .9rem; color: #52606b; }
