@@ -1,11 +1,11 @@
 ---
 title: "Beyond the Bracket: What Shaped March Madness Upsets?"
-subtitle: "An Excel exploration of the 2023 NCAA tournament"
-description: "Our team explores tournament progression, seeds, three-point shooting, and offensive efficiency through four assertion-evidence slides."
+subtitle: "2023 NCAA Tournament | Data Visualization Team Project"
+description: "Four questions about tournament upsets, explored through Excel and assertion-evidence slides."
 date: "2026-11-13"
 image: "images/slide-3.png"
 toc: true
-toc-title: "On this page"
+toc-title: "Explore the project"
 toc-depth: 2
 format:
   html:
@@ -13,118 +13,130 @@ format:
     lightbox: true
 ---
 
-::: {.callout-note title="Local draft — awaiting team review"}
-The Excel workbook and Connor's and Tomas's portfolio links will be added later. The date-versus-round description in Question 1 and the Excel methods for Questions 3–4 still need team confirmation. This draft has not been published.
-:::
-
 ## Our team
 
-[Blake Conrad](#0) · [Evan Charles](#0) · [Gavin Yanez](#0) · [Connor Anderson](#0) · ​ [**Tomas Ybarra**](https://btybarra66.github.io/)\
+[Blake Conrad](https://blake12340.github.io/) · [Evan Charles](https://jevancharles.github.io/) · [Gavin Yanez](https://gavin-yanez.github.io/) · [Connor Anderson](https://connor-a853.github.io/) · [Tomas Ybarra](https://btybarra66.github.io/)
 
 ## The data behind the bracket
 
-Our team used data for the 2023 March Madness tournament, combining two CSV files from Bart Torvik:
+March Madness is remembered for unexpected wins. Our project looks beyond individual highlights to explore how tournament progression, seed, three-point shooting, and offensive efficiency relate to upset outcomes in the **2023 NCAA men's basketball tournament**.
 
-- [2023_team_results.csv](https://barttorvik.com/2023_team_results.csv)
-- [2023_fffinal.csv](https://barttorvik.com/2023_fffinal.csv)
+Our project materials identify two Bart Torvik data files: [2023 team results](https://barttorvik.com/2023_team_results.csv) and [2023 four-factor statistics](https://barttorvik.com/2023_fffinal.csv). The analysis presented in our slides combines team statistics with tournament seeds and results. The supplied spreadsheet export contains 64 team rows, with four teams at each seed from 1 through 16. It includes a Yes/No "Won an Upset" field, tournament upset-win counts, Three-Point %, and separate pre-tournament shooting and efficiency fields. Team-level comparisons describe seeds and shooting percentages; game-level comparisons describe tournament rounds and scoring margins. These are different units of analysis and should not be interpreted interchangeably.
 
-Our analysis considers tournament seeds, game outcomes, tournament progression, three-point shooting percentages, and pre-tournament offensive efficiency. Together, these measures let us explore when upsets happened and characteristics of the teams involved. The Excel workbook will be added here after the team completes its review.
+An **upset** means a team with a larger seed number defeats a team with a smaller seed number. For example, a No. 9 seed beating a No. 8 seed is an upset under this definition. **Offensive efficiency** measures points scored per 100 possessions, allowing offenses to be compared on a common scale.
 
-We defined an **upset** as a game in which the team with the larger seed number defeated the team with the smaller seed number. These findings describe the tournament we studied; they do not guarantee what will happen in another season.
+[View the presentation (PDF)](march-madness-slides.pdf){.btn .btn-primary}
 
-[View or download our presentation (PDF)](march-madness-slides.pdf){.btn .btn-primary}
+*Data verification: The seed comparison and shooting histogram match the supplied spreadsheet PDF export. The export contains team statistics, not game-by-game results or editable Excel formulas. The round and scatter-chart workflows below explain the supplied slides but cannot be fully audited from that export. All original slide images are preserved.*
 
-## Question 1: How did the upset percentage change as the tournament progressed?
+## Question 1: When were upsets most common?
 
-### Why this question is interesting
+### The question and why it matters
 
-March Madness can feel increasingly unpredictable as teams advance. We wanted to see how the percentage of games ending in an upset changed as the 2023 tournament progressed, rather than relying on memorable games alone.
+**How did the percentage of games ending in an upset change across tournament rounds?** We were interested in whether later rounds were more unpredictable than early rounds. Comparing percentages, instead of raw upset counts, matters because each successive round contains fewer games.
 
-### How we used Excel
+### Excel analysis
 
-We marked a game as an upset when the team with the larger seed number beat the team with the smaller seed number. We then grouped the games by date and divided the number of upsets on each date by the total number of games played that day.
+A game-level table needs the tournament round and the seeds of the winning and losing teams. An upset indicator assigns 1 when the winning seed number is larger than the losing seed number, and 0 otherwise. For example, an Excel table formula can use `=IF([@WinningSeed]>[@LosingSeed],1,0)`.
 
-$$\text{Daily upset percentage} = \frac{\text{Upsets on that date}}{\text{Games played on that date}}\times 100\%$$
+A PivotTable groups games by round, sums the upset indicator, and counts the games. Dividing the upset count by the game count gives the rate. Equivalently, the average of a complete 1/0 upset indicator within a round gives the same proportion. The results are formatted as percentages and ordered from the Round of 64 through the championship.
 
-Using percentages let us compare days with different numbers of games. For example, March 25 had a 100% upset rate because both games played that day ended in upsets.
+**Upset rate = number of upset games in the round ÷ total games in the round.**
 
-### How the visual was developed
+This grouping matches the slide's horizontal axis: tournament rounds, rather than calendar dates. At the Elite Eight, three upsets out of four games give the displayed **75%**.
 
-For the date-based analysis, we created a line graph with game date on the horizontal axis and upset percentage on the vertical axis. Ordering the dates chronologically lets the reader follow how the rate changed over time.
+### Developing the visual
 
-### Assertion-evidence slide
+The slide uses a line chart to connect the rounds in their playing order. The percentage scale runs from 0% to 100%, giving a consistent reference for each round. The single blue line keeps attention on the rise to the Elite Eight and the drop afterward. The large headline states the takeaway, with the chart supplying the evidence.
 
-![Original assertion-evidence slide showing upset rates by tournament round, with a peak of 75% in the Elite Eight.](images/slide-2.png){fig-alt="Line chart of upset rate by tournament round. Rates rise through the Elite Eight to 75%, then fall to zero for the Final Four and championship."}
+### Assertion-evidence slide and interpretation
 
-::: {.callout-warning title="Reconcile the slide and method before publishing"}
-The supplied slide summarizes **tournament rounds**, while the explanation above summarizes **dates**. These are different groupings. The slide peaks at 75% in the Elite Eight and then falls to 0%; its headline should not imply that the rate increased throughout the entire tournament. Confirm the grouping in the workbook and align the final slide and explanation.
-:::
+![Team slide: upset rate by tournament round.](images/slide-2.png){fig-alt="Upset rate increases from the Round of 64 through the Elite Eight, where it reaches 75%, then drops to 0% in the Final Four and championship."}
 
-## Question 2: Which seeds had the highest percentage of teams winning an upset?
+**The Elite Eight had the highest displayed upset rate, at 75%.** The rate did not increase throughout the entire tournament: it fell to 0% in the Final Four and championship. The slide's opening claim therefore needs this qualification. Also, a high percentage in a four-game round is based on far fewer observations than a percentage in the 32-game opening round.
 
-### Why this question is interesting
+## Question 2: Which seeds produced the most upset-winning teams?
 
-March Madness is known for its unpredictable outcomes, especially when lower-ranked teams defeat higher-ranked opponents. We wanted to determine which tournament seeds had the highest percentage of teams winning an upset. This helps us understand how tournament seeding relates to upset victories.
+### The question and why it matters
 
-### How we used Excel
+**Which seeds had the highest percentage of teams winning an upset?** We wanted to see whether upset-winning teams were concentrated among particular seeds. This gives a more specific picture than treating every underdog as equally likely to succeed.
 
-We used Microsoft Excel to analyze the tournament data and created a PivotTable to organize it by tournament seed and summarize the upset percentages for each seed. We then used those results to create a horizontal bar chart, allowing us to compare the percentages across seeds.
+### Excel analysis
 
-### How the visual was developed
+The project draft identifies a PivotTable organized by Tournament Seed. The supplied export confirms that the chart uses the Yes/No "Won an Upset" field: count Yes entries within each seed and divide by the four team rows for that seed. Seeds 5, 7, and 8 each have two Yes entries, giving 2 / 4 = 50%. This counts each team once rather than counting its total upset wins. In Excel, a helper column such as `=IF([@[Won an Upset]]="Yes",1,0)` can be averaged by seed in the PivotTable to reproduce the percentages.
 
-The chart displays tournament seeds on the vertical axis and the percentage of teams winning an upset on the horizontal axis. We organized the results to make differences between seeds easy to identify. The slide's assertion highlights the three seeds tied for the highest percentage, while the chart provides the evidence supporting that conclusion.
+**Percentage of teams winning an upset = teams at that seed with an upset win ÷ all included teams at that seed.**
 
-### Assertion-evidence slide
+The seed summary becomes the source range for a horizontal bar chart. This is a team-level measure, not the percentage of games won by underdogs. That distinction prevents a team that advances through several rounds from being counted repeatedly as separate teams.
 
-**No. 5, 7, and 8 seeds tied for the highest percentage of teams winning an upset, each at 50%.**
+### Developing the visual
 
-![No. 5, 7, and 8 seeds tied at 50% in the team's analysis.](images/slide-3.png){fig-alt="Horizontal bar chart showing No. 5, 7, and 8 seeds at 50%, the highest percentage of teams winning an upset in the team's analysis."}
+The chart places tournament seeds on the vertical axis and percentages on the horizontal axis. Bars are ranked from the largest percentages to the smallest, making the leaders immediately visible. A shared zero baseline makes bar lengths directly comparable. The same blue color throughout keeps the emphasis on magnitude rather than suggesting unrelated categories.
 
-## Question 3: What three-point shooting percentages were common among upset-winning teams?
+### Assertion-evidence slide and interpretation
 
-### Why this question is interesting
+![Team slide: percentage of teams winning an upset by seed.](images/slide-3.png){fig-alt="Horizontal bars show seeds 5, 7, and 8 tied at 50%. Seeds 3, 9, 10, 11, 13, 15, and 16 are shown at 25%; the remaining seeds are at 0%."}
 
-Three-point shooting can help an underdog compete with a higher-seeded opponent. Examining the shooting percentages of upset-winning teams helps us describe whether those teams tended to fall into particular shooting ranges.
+**No. 5, 7, and 8 seeds tied for the highest displayed percentage, at 50%.** This is a descriptive finding from the project data, not a guaranteed upset probability for future tournaments. A No. 1 seed cannot record a seed-based upset against a smaller seed number, so a 0% value for that seed does not indicate poor performance.
 
-### How Excel was used — confirmation pending
+## Question 3: What shooting percentages characterized upset winners?
 
-The slide shows a frequency distribution of three-point shooting percentages among upset-winning teams. Its bins run in two-percentage-point intervals, and the vertical axis counts teams. The teammate responsible for this analysis still needs to confirm the filtering steps, the shooting-percentage field used, and how the frequency table or histogram was created in Excel.
+### The question and why it matters
 
-### How the visual was developed
+**What three-point shooting percentages were most common among upset-winning teams?** Three-point shooting can help explain how underdogs compete. We wanted to describe the shooting profiles of teams that recorded upsets and identify the most common percentage range.
 
-The displayed histogram places three-point shooting percentage ranges on the horizontal axis and number of teams on the vertical axis. Adjacent bars make it easy to compare the frequency in each interval. The tallest bar is the 36%–38% interval, containing five teams.
+### Excel analysis
 
-### Assertion-evidence slide
+Filtering "Won an Upset" to Yes in the supplied export gives 13 team rows. Their values in the **Three-Point %** column reproduce the slide histogram; this is distinct from the separate **Pre-Tournament Three-Point %** column. In Excel, retain one row per selected team and group the Three-Point % values into equal intervals. The displayed bins are two percentage points wide: 30%-32%, 32%-34%, and so on through 40%-42%.
 
-![Original slide showing a histogram of three-point shooting percentages among upset-winning teams.](images/slide-4.png){fig-alt="Histogram of upset-winning teams' three-point shooting percentages. The highest bar is the 36%–38% interval with five teams."}
+Excel's histogram tool, or a frequency table with consistent bin boundaries, counts how many observations fall in each interval. The chart displays counts of **1, 2, 3, 5, 2, and 0** across those six bins. These counts are reproduced with lower-inclusive, upper-exclusive intervals: for example, 34.0% belongs in 34%-36% and 36.0% belongs in 36%-38%. A frequency table can use COUNTIFS to count values greater than or equal to each lower boundary and less than the next boundary. The percentages are the source column values, not shooting percentages calculated from individual upset games.
 
-::: {.callout-note title="Interpretation to confirm with the team"}
-The histogram shows the distribution **among upset-winning teams**. By itself, it does not establish that a higher shooting percentage causes an upset or increases the probability of one. A headline directly supported by this chart would be: **“The 36%–38% shooting interval contained the most upset-winning teams.”**
-:::
+### Developing the visual
 
-## Question 4: How did offensive efficiency differences relate to underdog scoring margins?
+A histogram is appropriate because shooting percentage is numeric and the question concerns its distribution. Equal-width intervals make frequencies comparable. Touching bars show that the intervals belong to a continuous scale, while the vertical axis reports the number of teams. A single color emphasizes the overall shape and the tallest interval.
 
-### Why this question is interesting
+### Assertion-evidence slide and interpretation
 
-Seeds summarize expectations, but they do not describe every team's strengths. Comparing offensive efficiency with scoring margin helps us explore whether an underdog's offensive strength was associated with how closely it competed.
+![Team slide: three-point shooting distribution among upset-winning teams.](images/slide-4.png){fig-alt="Histogram with counts of 1, 2, 3, 5, 2, and 0 teams across two-percentage-point shooting intervals from 30% to 42%. The highest count is five in the 36%-38% interval."}
 
-### How Excel was used — confirmation pending
+**The 36%-38% interval contains the most upset-winning teams: five.** The histogram describes winners only. It cannot establish that higher shooting percentages cause more upsets, or that teams in this interval have the greatest chance of an upset. Answering that would also require comparison with teams that did not win upsets. The tallest bar represents a frequency, not a scoring margin.
 
-The slide compares pre-tournament offensive efficiency differences, measured in points per 100 possessions, with underdog scoring margins. The team still needs to confirm the Excel fields, subtraction order, included games, and steps used to create the scatter plot. Those details will be added with the workbook.
+## Question 4: How did offensive strength relate to game results?
 
-### How the visual was developed
+### The question and why it matters
 
-The scatter plot places offensive efficiency difference on the horizontal axis and underdog scoring margin on the vertical axis. Points above zero on the vertical axis represent positive underdog margins; points below zero represent negative margins. Displaying the individual observations lets the reader see both the overall pattern and the variation around it.
+**How did pre-tournament offensive efficiency differences relate to underdog scoring margins?** Seeds alone do not describe every team's strengths. We wanted to explore whether an underdog's offense was associated with a closer game or a victory against a higher-seeded opponent.
 
-### Assertion-evidence slide
+### Excel analysis
 
-![Original slide comparing offensive efficiency differences with underdog scoring margins.](images/slide-5.png){fig-alt="Scatter plot of pre-tournament offensive efficiency difference in points per 100 possessions against underdog scoring margin, with substantial variation among observations."}
+A game-level comparison pairs each underdog with its opponent and uses two numeric columns: pre-tournament offensive efficiency difference and final scoring margin. A consistent underdog-centered calculation is:
 
-The slide presents the team's conclusion that underdogs with a better offense win more games. The chart can help explore an association, but it does not establish that offensive efficiency alone caused the outcomes. The workbook is needed to verify the calculation and assess the strength of the relationship.
+- **Offensive efficiency difference = underdog efficiency − opponent efficiency**, in points per 100 possessions.
+- **Underdog scoring margin = underdog final score − opponent final score**, in points.
 
-## Project files
+These paired columns can be selected in Excel to insert an **XY scatter chart**, with efficiency difference assigned to X and scoring margin to Y. Each point then represents one game. The export confirms that a Pre-Tournament Offensive Efficiency field is available. It does not include the opponent pairings or final game scores, so the subtraction convention and exact game inclusion rules cannot be independently confirmed from this file.
 
-- [Presentation slides (PDF)](march-madness-slides.pdf)
-- **Excel workbook:** to be added after team review.
+### Developing the visual
 
-Before submission, our team will confirm the remaining methods, align Question 1's slide with its explanation, and use the same final project content on each member's ePortfolio.
+A scatter chart preserves each pair of numeric measurements instead of grouping them into categories. Efficiency difference appears horizontally and scoring margin vertically. Positive scoring margins indicate underdog wins; negative margins indicate losses. Showing the zero values makes the outcomes easier to interpret. The unconnected points also reveal how much game results vary, rather than implying a smooth or certain relationship.
+
+### Assertion-evidence slide and interpretation
+
+![Team slide: offensive efficiency difference and underdog scoring margin.](images/slide-5.png){fig-alt="Scatter chart comparing pre-tournament offensive efficiency difference in points per 100 possessions with underdog scoring margin. Both wins and losses appear across the plotted efficiency differences, with substantial variation."}
+
+**Offensive efficiency differences can help explore underdog performance, but the points show substantial variation.** The slide proposes that underdogs with better offenses win more games. The plot alone does not quantify that claim: a win-rate comparison or statistical analysis would be needed to measure it. Offensive strength is one possible factor, not a guarantee of victory or proof of causation.
+
+## What we learned
+
+Different charts answer different questions. The line chart shows progression across ordered rounds, the bar chart compares seeds, the histogram describes a distribution, and the scatter chart explores an association. Using clear labels, consistent units, and a specific headline helps readers connect each assertion to its evidence. Just as importantly, the written explanation should avoid claiming more than the chart can demonstrate.
+
+The seed and shooting results reproduce the supplied "Won an Upset" coding as recorded. They are not an independent audit of that coding against every tournament game.
+
+## Project files and sources
+
+- [Download the team's assertion-evidence slides (PDF)](march-madness-slides.pdf)
+- [Bart Torvik: 2023 team results (CSV)](https://barttorvik.com/2023_team_results.csv)
+- [Bart Torvik: 2023 four-factor statistics (CSV)](https://barttorvik.com/2023_fffinal.csv)
+
+This page documents the supplied team presentation. Results are specific to the project data and should not be treated as predictions for a future tournament.
+

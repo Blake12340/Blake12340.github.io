@@ -12,3 +12,5 @@ title-block-banner: true
 ---
 
 [View or download our presentation (PDF)](posts/march-madness/march-madness-slides.pdf)
+
+[Read our complete Data Visualization project](posts/march-madness/index.qmd)
