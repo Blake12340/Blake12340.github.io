@@ -11,4 +11,4 @@ page-layout: full
 title-block-banner: true
 ---
 
-[Download our PowerPoint presentation](March%20maddness%20Data%20Visualization.pdf)
+[View or download our presentation (PDF)](posts/march-madness/march-madness-slides.pdf)
